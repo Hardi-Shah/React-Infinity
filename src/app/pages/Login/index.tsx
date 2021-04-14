@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Logo } from "../../assets/images";
 
@@ -33,18 +33,18 @@ const Login = () => {
                   </Form.Group>
                   <div className="row">
                     <div className="col-sm-6">
-                      <Button type="submit" className="btn btn-login">
+                      <button type="button" className="btn btn-login">
                         Login
-                      </Button>{" "}
+                      </button>{" "}
                     </div>
                     <div className="col-sm-6 forgot-password">
-                      <Link to="">Forgot Password?</Link>
+                      <Link to="#">Forgot Password?</Link>
                     </div>
                   </div>
                   <div className="signup-link">
                     Don't have an account?{" "}
                     <span>
-                      <Link to="">Sign Up</Link>
+                      <Link to="#">Sign Up</Link>
                     </span>
                   </div>
                 </Form>

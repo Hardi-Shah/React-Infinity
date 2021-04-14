@@ -12,9 +12,14 @@ import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
 
 const Dashboard = () => {
+  function toggleOverlay() {
+    document.getElementById("overlay")!.classList.toggle("display-block-toggle");
+    document.getElementById("Sidebar")!.classList.toggle("sidenav-toggle");
+    document.getElementById("main")!.classList.toggle("main-toggle");
+  }
   return (
     <div className="wrapper">
-      <div id="overlay"></div>
+      <div id="overlay" onClick={() => toggleOverlay()}></div>
       <Header />
       <Sidebar />
       <div id="main">

@@ -1,4 +1,6 @@
 import React from "react";
+import { Dropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import {
   ChevronDownGreyIcon,
   LogoIcon,
@@ -17,6 +19,13 @@ import {
 } from "../../assets/images";
 
 const Header = () => {
+  function toggleNav() {
+    document.getElementById("Sidebar")!.classList.toggle("sidenav-toggle");
+    document.getElementById("main")!.classList.toggle("main-toggle");
+    document
+      .getElementById("overlay")!
+      .classList.toggle("display-block-toggle");
+  }
   return (
     <nav className="navbar navbar-expand navbar-light fixed-top">
       <div className="horizontal-logo-div">
@@ -25,11 +34,11 @@ const Header = () => {
       <span>
         <img src={LogoIcon} alt="logo" className="horizontal-logo-mobile" />
       </span>
-      <a className="navbar-brand d-flex w-50 mr-auto" href='/#'>
-        <span id="openNav" className="toggle-nav">
+      <Link className="navbar-brand d-flex w-50 mr-auto" to="#">
+        <span id="openNav" className="toggle-nav" onClick={() => toggleNav()}>
           <img src={MenuIcon} alt="menu" className="menu-logo" />
         </span>
-      </a>
+      </Link>
       <div className="navbar-collapse w-100" id="collapsingNavbar">
         <ul className="navbar-nav ml-auto navbar-user-details">
           <li id="notification-icon" className="nav-item bell-icon">
@@ -131,14 +140,14 @@ const Header = () => {
           <li className="nav-item nav-item-mobile">
             <div className="founder-name">John Doe</div>
             <div className="dropdown">
-              <a
-                className="founder-dropdown dropdown-toggle"
-                href="/#"
+              <Link
+                className="founder-dropdown dropdown-toggle" 
+                to="#"
                 id="dropdownMenuButton"
                 data-toggle="dropdown"
               >
                 Founder of app
-              </a>
+              </Link>
               <div
                 className="dropdown-menu"
                 aria-labelledby="dropdownMenuButton"
