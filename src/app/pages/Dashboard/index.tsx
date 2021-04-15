@@ -1,4 +1,3 @@
-import React from "react";
 import { Table } from "react-bootstrap";
 import {
   AnalysisSmallGraphIcon,
@@ -8,12 +7,15 @@ import {
   TotalLeadsReportIcon,
   TotalPendingIcon,
 } from "../../assets/images";
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
 
 const Dashboard = () => {
   function toggleOverlay() {
-    document.getElementById("overlay")!.classList.toggle("display-block-toggle");
+    document
+      .getElementById("overlay")!
+      .classList.toggle("display-block-toggle");
     document.getElementById("Sidebar")!.classList.toggle("sidenav-toggle");
     document.getElementById("main")!.classList.toggle("main-toggle");
   }
@@ -283,14 +285,7 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-
-            <div className="col-md-12">
-              <p className="dashboard-copyright">
-                Copyright 2021.All rights reserved.
-                <span className="span-career">Careers</span>
-                <span className="span-policy">Prviacy Policy</span>
-              </p>
-            </div>
+            <Footer />
           </div>
         </div>
       </div>

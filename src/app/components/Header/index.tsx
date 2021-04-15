@@ -1,4 +1,3 @@
-import React from "react";
 import { Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import {
@@ -41,16 +40,22 @@ const Header = () => {
       </Link>
       <div className="navbar-collapse w-100" id="collapsingNavbar">
         <ul className="navbar-nav ml-auto navbar-user-details">
-          <li id="notification-icon" className="nav-item bell-icon">
-            <img
-              src={NotificationBellIcon}
-              alt="notification-bell"
-              data-toggle="dropdown"
-              className="bell-logo"
-            />
-            <span className="badge notification-badge">3</span>
-            <ul
-              className="dropdown-menu notifications"
+          <Dropdown>
+            <Dropdown.Toggle
+              as="li"
+              id="notification-icon"
+              className="nav-item bell-icon"
+            >
+              <img
+                src={NotificationBellIcon}
+                alt="notification-bell"
+                className="bell-logo"
+              />
+              <span className="badge notification-badge">3</span>
+            </Dropdown.Toggle>
+            <Dropdown.Menu
+              as="ul"
+              className=" notifications"
               role="menu"
               aria-labelledby="dropdownMenu"
             >
@@ -127,8 +132,8 @@ const Header = () => {
                   />
                 </span>
               </li>
-            </ul>
-          </li>
+            </Dropdown.Menu>
+          </Dropdown>
 
           <li className="nav-item">
             <img
@@ -139,29 +144,23 @@ const Header = () => {
           </li>
           <li className="nav-item nav-item-mobile">
             <div className="founder-name">John Doe</div>
-            <div className="dropdown">
-              <Link
-                className="founder-dropdown dropdown-toggle" 
-                to="#"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-              >
-                Founder of app
-              </Link>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton"
-              >
+            <Dropdown>
+              <Dropdown.Toggle as="span" className="founder-dropdown">
+                <Link className="founder-dropdown " to="#">
+                  Founder of app
+                </Link>
+              </Dropdown.Toggle>
+              <Dropdown.Menu as="span">
                 <div className="row">
-                  <a className="dropdown-item user-dropdown" href="/#">
+                  <Link className="dropdown-item user-dropdown" to="#">
                     <div className="col-2">
                       <img src={UserProfileIcon} alt="user-profile" />
                     </div>
                     <div className="col-10">Profile</div>
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a className="dropdown-item user-dropdown" href="/#">
+                  <Link className="dropdown-item user-dropdown" to="#">
                     <div className="col-2">
                       <img
                         src={UserProfileSettingIcon}
@@ -169,10 +168,10 @@ const Header = () => {
                       />
                     </div>
                     <div className="col-10">Settings</div>
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a className="dropdown-item user-dropdown" href="/#">
+                  <Link className="dropdown-item user-dropdown" to="#">
                     <div className="col-2">
                       <img
                         src={UserProfilePasswordIcon}
@@ -180,18 +179,10 @@ const Header = () => {
                       />
                     </div>
                     <div className="col-10">Change Password</div>
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a className="dropdown-item user-dropdown" href="/login">
-                    <div className="col-2">
-                      <img src={UserProfileIcon} alt="user-profile" />
-                    </div>
-                    <div className="col-10">Login</div>
-                  </a>
-                </div>
-                <div>
-                  <a className="dropdown-item user-dropdown" href="/#">
+                  <Link className="dropdown-item user-dropdown" to="/">
                     <div className="col-2">
                       <img
                         src={UserProfileLogoutIcon}
@@ -199,10 +190,10 @@ const Header = () => {
                       />
                     </div>
                     <div className="col-10">Logout</div>
-                  </a>
+                  </Link>
                 </div>
-              </div>
-            </div>
+              </Dropdown.Menu>
+            </Dropdown>
           </li>
         </ul>
       </div>

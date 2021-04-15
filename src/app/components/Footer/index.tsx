@@ -1,11 +1,14 @@
-import React from 'react'
 
-function index() {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+const Footer = () => {
+  return (
+    <div className="col-md-12">
+      <p className="dashboard-copyright">
+        Copyright 2021.All rights reserved.
+        <span className="span-career">Careers</span>
+        <span className="span-policy">Prviacy Policy</span>
+      </p>
+    </div>
+  );
+};
 
-export default index
+export default Footer;

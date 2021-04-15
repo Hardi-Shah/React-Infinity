@@ -1,5 +1,4 @@
-import React from "react";
-import { Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Logo } from "../../assets/images";
 
@@ -33,9 +32,13 @@ const Login = () => {
                   </Form.Group>
                   <div className="row">
                     <div className="col-sm-6">
-                      <button type="button" className="btn btn-login">
+                      <Button
+                        type="button"
+                        variant="primary"
+                        className="btn-login"
+                      >
                         Login
-                      </button>{" "}
+                      </Button>{" "}
                     </div>
                     <div className="col-sm-6 forgot-password">
                       <Link to="#">Forgot Password?</Link>

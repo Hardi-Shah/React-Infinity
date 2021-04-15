@@ -1,14 +1,14 @@
-import React from "react";
+import { useState } from "react";
 import {
   Alert,
   Button,
   Form,
   FormGroup,
+  Pagination,
   Tab,
   Table,
   Tabs,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import {
   AlertCloseIcon,
   AlertDangerIcon,
@@ -25,6 +25,11 @@ import Header from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
 
 const InnerPage = () => {
+  const [showSuccess, setShowSuccess] = useState(true);
+  const [showInfo, setShowInfo] = useState(true);
+  const [showWarning, setShowWarning] = useState(true);
+  const [showDanger, setShowDanger] = useState(true);
+
   function toggleOverlay() {
     document
       .getElementById("overlay")!
@@ -240,7 +245,7 @@ const InnerPage = () => {
                           <Button
                             type="button"
                             variant="outline-primary"
-                            className=" btn-completed"
+                            className="btn-completed"
                           >
                             Completed
                           </Button>
@@ -272,37 +277,29 @@ const InnerPage = () => {
                       </div>
                       <h3 className="entry-text">Entries</h3>
                     </div>
-                    <div className="pagination justify-content-end">
-                      <Link to="#">
+                    <Pagination className="justify-content-end">
+                      <Pagination.Item href="#">
                         <img
                           src={ChevronLeftIcon}
                           alt=""
                           className="chevron-left-img"
                         />
-                      </Link>
-                      <Link className="pagination-tabs" to="#">
-                        1
-                      </Link>
-                      <Link className="pagination-tabs active" to="#">
+                      </Pagination.Item>
+                      <Pagination.Item href="#">1</Pagination.Item>
+                      <Pagination.Item active href="#">
                         2
-                      </Link>
-                      <Link className="pagination-tabs" to="#">
-                        3
-                      </Link>
-                      <Link className="pagination-tabs" to="#">
-                        4
-                      </Link>
-                      <Link className="pagination-tabs" to="#">
-                        5
-                      </Link>
-                      <Link to="#">
+                      </Pagination.Item>
+                      <Pagination.Item href="#">3</Pagination.Item>
+                      <Pagination.Item href="#">4</Pagination.Item>
+                      <Pagination.Item href="#">5</Pagination.Item>
+                      <Pagination.Item href="#">
                         <img
                           src={ChevronRightIcon}
                           alt=""
                           className="chevron-left-img"
                         />
-                      </Link>
-                    </div>
+                      </Pagination.Item>
+                    </Pagination>
                   </div>
                 </div>
               </div>
@@ -311,7 +308,7 @@ const InnerPage = () => {
             <div className="col-md-12">
               <div className="form-div content-box">
                 <div className="analytics-text">
-                  <div className="analytics-border">form STYLE</div>
+                  <div className="analytics-border">FORM STYLE</div>
                 </div>
                 <Form>
                   <div className="row">
@@ -644,12 +641,12 @@ const InnerPage = () => {
                 </Form>
 
                 <Form>
-                <div className="row">
-                  <div className="col-md-12">
-                    <h3 className="element-head">Other Elements</h3>
-                  </div>
+                  <div className="row">
+                    <div className="col-md-12">
+                      <h3 className="element-head">Other Elements</h3>
+                    </div>
 
-                  <div className="col-md-12">
+                    <div className="col-md-12">
                       <div className="file-upload">
                         <span className="form-label one-column-label">
                           File Upload:
@@ -665,217 +662,277 @@ const InnerPage = () => {
                         </Form.Label>
                         <Form.Control id="input-file" type="file" />
                       </div>
-                  </div>
+                    </div>
 
-                  <div className="col-md-12">
-                    <FormGroup>
-                      <Form.Label
-                        className="checkbox-label"
-                        htmlFor="exampleInput"
-                      >
-                        Check Boxes
-                      </Form.Label>
-                    </FormGroup>
-                  </div>
+                    <div className="col-md-12">
+                      <FormGroup>
+                        <Form.Label
+                          className="checkbox-label"
+                          htmlFor="exampleInput"
+                        >
+                          Check Boxes
+                        </Form.Label>
+                      </FormGroup>
+                    </div>
 
-                  <div className="col-md-12">
-                    <FormGroup>
-                      <div className="custom-control custom-checkbox checkbox1">
-                        <Form.Check.Input
-                          type="checkbox"
-                          className="custom-control-input"
-                          id="inlineCheckbox1"
-                          value="option1"
-                        />
-                        <Form.Check.Label
-                          className="custom-control-label"
-                          htmlFor="inlineCheckbox1"
-                        >
-                          Option 1
-                        </Form.Check.Label>
-                      </div>
-                      <div className="custom-control custom-checkbox checkbox1">
-                        <Form.Check.Input
-                          type="checkbox"
-                          className="custom-control-input"
-                          id="inlineCheckbox2"
-                          value="option2"
-                        />
-                        <Form.Check.Label
-                          className="custom-control-label"
-                          htmlFor="inlineCheckbox2"
-                        >
-                          Option 2
-                        </Form.Check.Label>
-                      </div>
-                      <div className="custom-control custom-checkbox checkbox1">
-                        <Form.Check.Input
-                          type="checkbox"
-                          className="custom-control-input"
-                          id="inlineCheckbox3"
-                          value="option3"
-                        />
-                        <Form.Check.Label
-                          className="custom-control-label"
-                          htmlFor="inlineCheckbox3"
-                        >
-                          Option 3
-                        </Form.Check.Label>
-                      </div>
-                    </FormGroup>
-                  </div>
+                    <div className="col-md-12">
+                      <FormGroup>
+                        <div className="custom-control custom-checkbox checkbox1">
+                          <Form.Check.Input
+                            type="checkbox"
+                            className="custom-control-input"
+                            id="inlineCheckbox1"
+                            value="option1"
+                          />
+                          <Form.Check.Label
+                            className="custom-control-label"
+                            htmlFor="inlineCheckbox1"
+                          >
+                            Option 1
+                          </Form.Check.Label>
+                        </div>
+                        <div className="custom-control custom-checkbox checkbox1">
+                          <Form.Check.Input
+                            type="checkbox"
+                            className="custom-control-input"
+                            id="inlineCheckbox2"
+                            value="option2"
+                          />
+                          <Form.Check.Label
+                            className="custom-control-label"
+                            htmlFor="inlineCheckbox2"
+                          >
+                            Option 2
+                          </Form.Check.Label>
+                        </div>
+                        <div className="custom-control custom-checkbox checkbox1">
+                          <Form.Check.Input
+                            type="checkbox"
+                            className="custom-control-input"
+                            id="inlineCheckbox3"
+                            value="option3"
+                          />
+                          <Form.Check.Label
+                            className="custom-control-label"
+                            htmlFor="inlineCheckbox3"
+                          >
+                            Option 3
+                          </Form.Check.Label>
+                        </div>
+                      </FormGroup>
+                    </div>
 
-                  <div className="col-md-12">
-                    <FormGroup>
-                      <Form.Label
-                        className="checkbox-label"
-                        htmlFor="exampleInput"
-                      >
-                        Radio Buttons
-                      </Form.Label>
-                    </FormGroup>
-                  </div>
+                    <div className="col-md-12">
+                      <FormGroup>
+                        <Form.Label
+                          className="checkbox-label"
+                          htmlFor="exampleInput"
+                        >
+                          Radio Buttons
+                        </Form.Label>
+                      </FormGroup>
+                    </div>
 
-                  <div className="col-md-12">
-                    <FormGroup>
-                      <div className="custom-control custom-radio checkbox1">
-                        <Form.Check.Input
-                          type="radio"
-                          className="custom-control-input"
-                          name="InputRadio"
-                          id="InputRadio1"
-                          value="option1"
-                        />
-                        <Form.Check.Label
-                          className="custom-control-label"
-                          htmlFor="InputRadio1"
-                        >
-                          Option 1
-                        </Form.Check.Label>
-                      </div>
-                      <div className="custom-control custom-radio checkbox1">
-                        <Form.Check.Input
-                          type="radio"
-                          className="custom-control-input"
-                          name="InputRadio"
-                          id="InputRadio2"
-                          value="option2"
-                        />
-                        <Form.Check.Label
-                          className="custom-control-label"
-                          htmlFor="InputRadio2"
-                        >
-                          Option 2
-                        </Form.Check.Label>
-                      </div>
-                      <div className="custom-control custom-radio checkbox1">
-                        <Form.Check.Input
-                          type="radio"
-                          className="custom-control-input"
-                          name="InputRadio"
-                          id="InputRadio3"
-                          value="option3"
-                        />
-                        <Form.Check.Label
-                          className="custom-control-label"
-                          htmlFor="InputRadio3"
-                        >
-                          Option 3
-                        </Form.Check.Label>
-                      </div>
-                    </FormGroup>
-                  </div>
+                    <div className="col-md-12">
+                      <FormGroup>
+                        <div className="custom-control custom-radio checkbox1">
+                          <Form.Check.Input
+                            type="radio"
+                            className="custom-control-input"
+                            name="InputRadio"
+                            id="InputRadio1"
+                            value="option1"
+                          />
+                          <Form.Check.Label
+                            className="custom-control-label"
+                            htmlFor="InputRadio1"
+                          >
+                            Option 1
+                          </Form.Check.Label>
+                        </div>
+                        <div className="custom-control custom-radio checkbox1">
+                          <Form.Check.Input
+                            type="radio"
+                            className="custom-control-input"
+                            name="InputRadio"
+                            id="InputRadio2"
+                            value="option2"
+                          />
+                          <Form.Check.Label
+                            className="custom-control-label"
+                            htmlFor="InputRadio2"
+                          >
+                            Option 2
+                          </Form.Check.Label>
+                        </div>
+                        <div className="custom-control custom-radio checkbox1">
+                          <Form.Check.Input
+                            type="radio"
+                            className="custom-control-input"
+                            name="InputRadio"
+                            id="InputRadio3"
+                            value="option3"
+                          />
+                          <Form.Check.Label
+                            className="custom-control-label"
+                            htmlFor="InputRadio3"
+                          >
+                            Option 3
+                          </Form.Check.Label>
+                        </div>
+                      </FormGroup>
+                    </div>
 
-                  <div className="col-md-12">
-                    <div className="button-element">
-                      <Button
-                        type="button"
-                        variant="primary"
-                        className="primary-btn"
-                      >
-                        Primary
-                      </Button>
-                      <Button
-                        type="button"
-                        variant="secondary"
-                        className="secondary-btn"
-                      >
-                        Secondary
-                      </Button>
-                      <Form.Check
-                        type="switch"
-                        id="custom-switch"
-                        className="custom-switch"
-                      />
+                    <div className="col-md-12">
+                      <div className="button-element">
+                        <Button
+                          type="button"
+                          variant="primary"
+                          className="primary-btn"
+                        >
+                          Primary
+                        </Button>
+                        <Button
+                          type="button"
+                          variant="secondary"
+                          className="secondary-btn"
+                        >
+                          Secondary
+                        </Button>
+                        <Form.Check
+                          type="switch"
+                          id="custom-switch"
+                          className="custom-switch"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-md-12">
+                      <div className="alert-message">
+                        {!showSuccess && (
+                          <div>
+                            <Button
+                              variant="success"
+                              className="mb-2 btn-success"
+                              onClick={() => setShowSuccess(true)}
+                            >
+                              Show Success Alert
+                            </Button>
+                          </div>
+                        )}
+                        {showSuccess && (
+                          <Alert
+                            className=" alert-success"
+                          >
+                            <img
+                              className="alert-icon"
+                              src={AlertSuccessIcon}
+                              alt=""
+                            />
+                            <span className="alert-success-text">
+                              This is a success message
+                            </span>
+                            <img
+                              className="alert-close"
+                              src={AlertCloseIcon}
+                              onClick={() => setShowSuccess(false)}
+                              alt=""
+                            />
+                          </Alert>
+                        )}
+
+                        {!showInfo && (
+                          <div>
+                            <Button
+                              variant="info"
+                              className="btn-info mb-2"
+                              onClick={() => setShowInfo(true)}
+                            >
+                              Show Info Alert
+                            </Button>
+                          </div>
+                        )}
+                        {showInfo && (
+                          <Alert className="alert alert-info">
+                            <img
+                              className="alert-icon"
+                              src={AlertInfoIcon}
+                              alt=""
+                            />
+                            <span className="alert-info-text">
+                              This is an info message
+                            </span>
+                            <img
+                              className="alert-close"
+                              src={AlertCloseIcon}
+                              alt=""
+                              onClick={() => setShowInfo(false)}
+                            />
+                          </Alert>
+                        )}
+
+                        {!showWarning && (
+                          <div>
+                            <Button
+                              variant="warning"
+                              className=" btn-warning mb-2"
+                              onClick={() => setShowWarning(true)}
+                            >
+                              Show Warning Alert
+                            </Button>
+                          </div>
+                        )}
+                        {showWarning && (
+                          <Alert className="alert alert-warning">
+                            <img
+                              className="alert-icon"
+                              src={AlertWarnIcon}
+                              alt=""
+                            />
+                            <span className="alert-warn-text">
+                              This is an alert message
+                            </span>
+                            <img
+                              className="alert-close"
+                              src={AlertCloseIcon}
+                              alt=""
+                              onClick={() => setShowWarning(false)}
+                            />
+                          </Alert>
+                        )}
+
+                        {!showDanger && (
+                          <div>
+                            <Button
+                              variant="danger"
+                              className="btn-danger mb-2"
+                              onClick={() => setShowDanger(true)}
+                            >
+                              Show Danger Alert
+                            </Button>
+                          </div>
+                        )}
+                        {showDanger && (
+                          <Alert className="alert alert-danger" role="alert">
+                            <img
+                              className="alert-icon"
+                              src={AlertDangerIcon}
+                              alt=""
+                            />
+                            <span className="alert-danger-text">
+                              This is an error message
+                            </span>
+                            <img
+                              className="alert-close"
+                              src={AlertCloseIcon}
+                              alt=""
+                              onClick={() => setShowDanger(false)}
+                            />
+                          </Alert>
+                        )}
+                      </div>
                     </div>
                   </div>
-
-                  <div className="col-md-12">
-                    <div className="alert-message">
-                      <Alert className=" alert-success">
-                        <img
-                          className="alert-icon"
-                          src={AlertSuccessIcon}
-                          alt=""
-                        />
-                        <span className="alert-success-text">
-                          This is a success message
-                        </span>
-                        <img
-                          className="alert-close"
-                          src={AlertCloseIcon}
-                          alt=""
-                        />
-                      </Alert>
-
-                      <Alert className="alert alert-info">
-                        <img
-                          className="alert-icon"
-                          src={AlertInfoIcon}
-                          alt=""
-                        />
-                        <span className="alert-info-text">
-                          This is an info message
-                        </span>
-                        <img
-                          className="alert-close"
-                          src={AlertCloseIcon}
-                          alt=""
-                        />
-                      </Alert>
-                      <Alert className="alert alert-warning">
-                        <img
-                          className="alert-icon"
-                          src={AlertWarnIcon}
-                          alt=""
-                        />
-                        <span className="alert-warn-text">
-                          This is an alert message
-                        </span>
-                        <img
-                          className="alert-close"
-                          src={AlertCloseIcon}
-                          alt=""
-                        />
-                      </Alert>
-                      <Alert className="alert alert-danger" role="alert">
-                        <img
-                          className="alert-icon"
-                          src={AlertDangerIcon}
-                          alt=""
-                        />
-                        <span className="alert-danger-text">
-                          This is an error message
-                        </span>
-                        <img
-                          className="alert-close"
-                          src={AlertCloseIcon}
-                          alt=""
-                        />
-                      </Alert>
-                    </div>
-                  </div>
-                </div>
                 </Form>
 
                 <div className="row">
@@ -883,8 +940,11 @@ const InnerPage = () => {
                     <h3 className="tab-head">Tab Style</h3>
                   </div>
                   <div className="col-md-12">
-                    <Tabs>
-                      <Tab eventKey="home" title="Maintenance1">
+                    <Tabs
+                      defaultActiveKey="maintenance1"
+                      id="uncontrolled-tab-example"
+                    >
+                      <Tab eventKey="maintenance1" title="Maintenance1">
                         <p className="nav-paragraph">
                           Lorem Ipsum is simply dummy text of the printing and
                           typesetting industry. Lorem Ipsum has been the
@@ -914,7 +974,7 @@ const InnerPage = () => {
                           Lorem Ipsum.
                         </p>
                       </Tab>
-                      <Tab eventKey="profile" title="Maintenance2">
+                      <Tab eventKey="maintenance2" title="Maintenance2">
                         <p className="nav-paragraph">
                           Lorem Ipsum is simply dummy text of the printing and
                           typesetting industry. Lorem Ipsum has been the
@@ -944,7 +1004,7 @@ const InnerPage = () => {
                           Lorem Ipsum.
                         </p>
                       </Tab>
-                      <Tab eventKey="contact" title="Maintenance3">
+                      <Tab eventKey="maintenance3" title="Maintenance3">
                         <p className="nav-paragraph">
                           Lorem Ipsum is simply dummy text of the printing and
                           typesetting industry. Lorem Ipsum has been the
